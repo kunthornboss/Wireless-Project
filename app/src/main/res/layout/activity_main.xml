@@ -24,7 +24,6 @@
             android:hint="User Name"
             android:textColor="#6bfff7"
             android:textColorHint="#52afaa"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <EditText
@@ -50,11 +49,17 @@
                 android:layout_height="wrap_content" />
             <Button
                 android:id="@+id/btn_submit"
-                android:text="Submit"
+                android:text="Login"
                 android:textAllCaps="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login as a student" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

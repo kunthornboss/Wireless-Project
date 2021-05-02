@@ -24,7 +24,6 @@
             android:hint="Student ID"
             android:textColor="#6bfff7"
             android:textColorHint="#52afaa"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <EditText
@@ -32,8 +31,6 @@
             android:hint="Full Name"
             android:textColor="#6bfff7"
             android:textColorHint="#52afaa"
-
-            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <LinearLayout

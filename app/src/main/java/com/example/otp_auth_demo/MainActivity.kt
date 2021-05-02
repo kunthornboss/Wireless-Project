@@ -31,16 +31,20 @@ class MainActivity : AppCompatActivity() {
         btn_submit.setOnClickListener {
             val user_name = et_user_name.text.toString();
             val password = et_password.text.toString();
-            val keyusername = "teacher";
+            val keyusername = "tester";
             val keypassword = "111";
             Toast.makeText(this@MainActivity, user_name, Toast.LENGTH_LONG).show()
 
             if(user_name == keyusername && password == keypassword) {
-                val i = Intent(this, RequestOTP::class.java)
+                val i = Intent(this, CheckAttendance::class.java)
                 startActivity(i)
             } else {
                 Toast.makeText(this,"Incorrect username or password", Toast.LENGTH_LONG).show()
             }
+        }
+        btn_login.setOnClickListener {
+            val i = Intent(this, RequestOTP::class.java)
+            startActivity(i)
         }
     }
 }
