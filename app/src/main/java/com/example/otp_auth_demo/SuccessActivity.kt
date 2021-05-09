@@ -26,11 +26,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class SuccessActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_success)
-
 
         var et_student_id = findViewById(R.id.et_student_id) as EditText
         var et_name = findViewById(R.id.et_name) as EditText
@@ -38,12 +36,10 @@ class SuccessActivity : AppCompatActivity() {
         var btn_submit = findViewById(R.id.btn_submit) as Button
 
         btn_reset.setOnClickListener {
-            // clearing user_name and password edit text views on reset button click
             et_user_name.setText("")
             et_password.setText("")
         }
 
-        // set on-click listener
         btn_submit.setOnClickListener {
             val student_id = et_student_id.text.toString();
             val fullname = et_name.text.toString();
@@ -51,7 +47,6 @@ class SuccessActivity : AppCompatActivity() {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
-
     }
 
     fun saveFireStore(id: String, name: String) {
@@ -70,6 +65,5 @@ class SuccessActivity : AppCompatActivity() {
             .addOnFailureListener{
                 Toast.makeText(this@SuccessActivity, "Error", Toast.LENGTH_SHORT ).show()
             }
-
     }
 }

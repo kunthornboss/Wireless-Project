@@ -41,6 +41,7 @@ class CheckAttendance : AppCompatActivity() {
                 .delete()
         }
     }
+
     fun readFireStoreData() {
         val db = FirebaseFirestore.getInstance()
         db.collection("users")
@@ -57,6 +58,5 @@ class CheckAttendance : AppCompatActivity() {
                     textViewResult.setText(result)
                 }
             }
-
     }
 }

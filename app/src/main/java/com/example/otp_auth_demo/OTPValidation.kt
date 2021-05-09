@@ -23,11 +23,11 @@ class OTPValidation : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                "code$mobileNumber", // Phone number to verify
-                60, // Timeout duration
-                java.util.concurrent.TimeUnit.SECONDS, // Unit of timeout
-                this, // Activity (for callback binding)
-                callbacks) // OnVerificationStateChangedCallbacks
+                "code$mobileNumber",
+                60,
+                java.util.concurrent.TimeUnit.SECONDS,
+                this,
+                callbacks)
 
         verifyButton.setOnClickListener {
             if (!otpTextField.text.isNullOrEmpty()) {
@@ -47,8 +47,6 @@ class OTPValidation : AppCompatActivity() {
                 }
 
                 override fun onVerificationFailed(e: FirebaseException) {
-                    // This callback is invoked in an invalid request for verification is made,
-                    // for instance if the the phone number format is not valid.
                     if (e is FirebaseAuthInvalidCredentialsException) {
                         Toast.makeText(this@OTPValidation, e.message, Toast.LENGTH_LONG).show()
                     } else if (e is FirebaseTooManyRequestsException) {
@@ -62,15 +60,12 @@ class OTPValidation : AppCompatActivity() {
                 ) {
                     super.onCodeSent(s, forceResendingToken)
                     mVerificationId = s
-                    //mResendToken = forceResendingToken
                 }
             }
 
     private fun verifyVerificationCode(code: String) {
-        //creating the credential
         val credential = PhoneAuthProvider.getCredential(mVerificationId!!, code)
 
-        //signing the user
         signInWithPhoneAuthCredential(credential)
     }
 
@@ -80,12 +75,11 @@ class OTPValidation : AppCompatActivity() {
                         this,
                         OnCompleteListener<AuthResult?> { task ->
                             if (task.isSuccessful) {
-                                //verification successful we will start the profile activity
-                                Toast.makeText(this,"Success", Toast.LENGTH_LONG).show()
+                                Toast.makeText(this,"OTP Verified", Toast.LENGTH_LONG).show()
                                 val i = Intent(this, SuccessActivity::class.java)
                                 startActivity(i)
                             } else {
-                                Toast.makeText(this,"Failed", Toast.LENGTH_LONG).show()
+                                Toast.makeText(this,"Invalid OTP", Toast.LENGTH_LONG).show()
                             }
                         })
     }
